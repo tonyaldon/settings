@@ -7,3 +7,6 @@
 [submodule "uconfig"]
 	path = uconfig
 	url = https://github.com/tonyaldon/uconfig.git
+[submodule "keyboard-layout"]
+	path = keyboard-layout
+	url = https://github.com/tonyaldon/keyboard-layout.git
