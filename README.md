@@ -32,7 +32,7 @@ To make appropriate symbolinc links for `i3`, `.emacs.d` and
 Symbolic links are done with [stow](https://www.gnu.org/software/stow/).
 
 To install `takbl` keyboard layout, see 
-[keyboard layout](./keyboard-layout/README.md) README.
+[keyboard layout](https://github.com/tonyaldon/keyboard-layout/tree/c3b2c099c2f3123e14c8488d0b7c02ebb0f52990) README.
 
 # License
 Project under MIT license
