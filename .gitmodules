@@ -1,3 +1,6 @@
 [submodule "i3"]
 	path = i3
 	url = https://github.com/tonyaldon/i3.git
+[submodule "emacs.d/.emacs.d"]
+	path = emacs.d/.emacs.d
+	url = https://github.com/tonyaldon/emacs.d.git
