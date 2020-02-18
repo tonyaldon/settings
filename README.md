@@ -14,13 +14,20 @@ Meaning of the directories:
 1. Good management of my workspace to work efficiently.
 2. Share my setting system.
 
-# setup
+# Setup
 
-To grab all the dependencies:
+To grab all the dependencies, run the command:
 
 	git clone --recurse-submodules https://github.com/tonyaldon/settings.git
 
-# Installation
+Or to grab all dependencies, set remote url to ssh protocol and get submodules as 
+stand alone repositories, run the command:
+
+	git clone https://github.com/tonyaldon/settings.git
+	cd settings
+	make git_repositories
+
+# Links
 
 To make appropriate symbolinc links for `i3`, `.emacs.d` and
 `uconfig`, run following commands:
@@ -31,6 +38,7 @@ To make appropriate symbolinc links for `i3`, `.emacs.d` and
 
 Symbolic links are done with [stow](https://www.gnu.org/software/stow/).
 
+# Install 
 To install `takbl` keyboard layout, see 
 [keyboard layout](https://github.com/tonyaldon/keyboard-layout/tree/c3b2c099c2f3123e14c8488d0b7c02ebb0f52990) README.
 
