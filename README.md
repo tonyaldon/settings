@@ -46,6 +46,16 @@ If you want to delete previous links made by running `make links`, run the comma
 To install `takbl` keyboard layout, see 
 [keyboard layout](https://github.com/tonyaldon/keyboard-layout/tree/c3b2c099c2f3123e14c8488d0b7c02ebb0f52990) README.
 
+# SSH
+
+SSH keys must be in the `~/.ssh` directory. So assuming that on your usb device your keys
+are in the directory `ssh` and the plugged usb device is named `sdb1`, run the following
+commands:
+
+	sudo mount /dev/sdb1 /mnt
+	sudo cp -r /mnt/ssh ~/.ssh
+	sudo umount /dev/sdb1
+
 # Audio
 
 1. If you get some trouble with the audio (audio cards), you can get informations by
