@@ -46,6 +46,28 @@ If you want to delete previous links made by running `make links`, run the comma
 To install `takbl` keyboard layout, see 
 [keyboard layout](https://github.com/tonyaldon/keyboard-layout/tree/c3b2c099c2f3123e14c8488d0b7c02ebb0f52990) README.
 
+# Audio
+
+1. If you get some trouble with the audio (audio cards), you can get informations by
+running the command:
+
+	pulseaudio -vvv
+
+2. The audio problem I've had was that I did have any sound. Running the command
+`pulseaudio -vvv` gave me:
+
+	E: [pulseaudio] pid.c: Daemon already running.
+	E: [pulseaudio] main.c: pa_pid_file_create() failed.
+
+I solve the problem by `removing` the `pulse` user config file and `rebooting` the
+system. Concretely, I ran the following commands:
+
+	rm -r ~/.config/pulse
+	reboot
+
+See the [stackexchange discussion](https://askubuntu.com/questions/1056153/pulseaudio-not-working-daemon-already-running-and-no-permission-for-home-folder)
+for more information.
+
 # Install ubuntu desktop
 
 ## Download
