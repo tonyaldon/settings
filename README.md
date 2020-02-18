@@ -21,22 +21,26 @@ To grab all the dependencies, run the command:
 	git clone --recurse-submodules https://github.com/tonyaldon/settings.git
 
 Or to grab all dependencies, set remote url to ssh protocol and get submodules as 
-stand alone repositories, run the command:
+stand alone repositories, run the commands:
 
 	git clone https://github.com/tonyaldon/settings.git
-	cd settings
+	cd path/to/settings
 	make git_repositories
 
 # Links
 
 To make appropriate symbolinc links for `i3`, `.emacs.d` and
-`uconfig`, run following commands:
+`uconfig`, run the commands:
 
-	cd settings
-	chmod +x install.sh
-	./install.sh
+	cd path/to/settings
+	make links
 
 Symbolic links are done with [stow](https://www.gnu.org/software/stow/).
+
+If you want to delete previous links made by running `make links`, run the commands:
+
+	cd path/to/settings
+	make clean_links	
 
 # Install 
 To install `takbl` keyboard layout, see 
