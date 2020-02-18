@@ -29,16 +29,20 @@ git_repositories:
 	@echo "[settings] set-url origin to ssh form...done"
 	@git submodule init
 
+BACKUP = .backup
+
 links:
-	@if [ -f $$HOME/.bashrc ];then mv $$HOME/.bashrc $$HOME/.bashrc-backup;fi
-	@if [ -f $$HOME/.profile ];then mv $$HOME/.profile $$HOME/.profile-backup;fi
-	@stow -t $$HOME emacs.d
-	@stow -t $$HOME uconfig
-	@stow -t $$HOME i3
+	@if [ ! -d $(BACKUP) ];then mkdir $(BACKUP);fi ; \
+	if [ -f $$HOME/.bashrc ];then mv $$HOME/.bashrc $(BACKUP)/.bashrc;fi ; \
+	if [ -f $$HOME/.profile ];then mv $$HOME/.profile $(BACKUP)/.profile;fi ; \
+	stow -t $$HOME emacs.d ; \
+	stow -t $$HOME uconfig ; \
+	stow -t $$HOME i3
 
 clean_links:
 	@stow -D -t $$HOME emacs.d
 	@stow -D -t $$HOME uconfig
 	@stow -D -t $$HOME i3
-	@if [ -f $$HOME/.bashrc-backup ];then mv $$HOME/.bashrc-backup $$HOME/.bashrc;fi
-	@if [ -f $$HOME/.profile-backup ];then mv $$HOME/.profile-backup $$HOME/.profile;fi
+	@if [ -f $(BACKUP)/.bashrc ];then mv $(BACKUP)/.bashrc $$HOME/.bashrc;fi
+	@if [ -f $(BACKUP)/.profile ];then mv $(BACKUP)/.profile $$HOME/.profile;fi
+	@if [ -d $(BACKUP) ]; then rm -rf $(BACKUP);fi
