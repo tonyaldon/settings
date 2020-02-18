@@ -27,3 +27,4 @@ git_repositories:
 	@git remote set-url origin git@github.com:tonyaldon/settings.git \
 	> $(LOG_GIT_REPOSITORIES) 2>&1
 	@echo "[settings] set-url origin to ssh form...done"
+	@git submodule init
