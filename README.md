@@ -78,6 +78,34 @@ system. Concretely, I ran the following commands:
 See the [stackexchange discussion](https://askubuntu.com/questions/1056153/pulseaudio-not-working-daemon-already-running-and-no-permission-for-home-folder)
 for more information.
 
+# Chromium Browser
+
+I'm using [Chromium](https://www.chromium.org/Home) as browser. Run this command to install it:
+
+	sudo apt install chromium-browser
+
+## Chromium extensions
+
+I'm using it with the following extensions:
+
+1. [Saka](https://chrome.google.com/webstore/detail/saka/nbdfpcokndmapcollfpjdpjlabnibjdi): elegent tab search, selection, and beyond.
+2. [Saka Key](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp): A keyboard interface to Chrome for mouseless browsing.
+3. [Dark Reader](https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh): Dark mode for every website.
+4. [AdBlock](https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom): Block ads and pop-ups on YouTube, Facebook, Twitch, and your favorite websites.
+
+## Set default browser
+
+To set `chromium-browser` as the default web browser, run the following commands and choose
+`chromium-browser` as alternative:
+
+	sudo update-alternatives --config x-www-browser
+	sudo update-alternatives --config gnone-www-browser
+
+Some applications use `xdg-open`, so you also have to run the following command:
+	xdg-settings set default-web-browser chromium-browser.desktop
+
+Get more information at the debian wiki page [Default Web Browser](https://wiki.debian.org/DefaultWebBrowser).
+
 # Install ubuntu desktop
 
 ## Download
