@@ -76,7 +76,39 @@ system. Concretely, I ran the following commands:
 	reboot
 
 See the [stackexchange discussion](https://askubuntu.com/questions/1056153/pulseaudio-not-working-daemon-already-running-and-no-permission-for-home-folder)
-for more information.
+to get more information.
+
+# Laptop lid switch
+
+To handle how the system deal with the laptop lid, tweak the file
+`/etc/systemd/logind.conf`.
+
+If you want your laptop to be still running when you close the lid (for instance
+to use another monitor), uncomment the line `#HandleLidSwitch=suspend` of the file
+`/etc/systemd/logind.conf` and change the argument `suspend` by `ignore`. So you end
+with the line `HandleLidSwitch=ignore` among the others.
+
+Restart the `Systemd` service to apply changes by running the command:
+
+	systemctl restart systemd-logind.service
+
+See [How to change lid close action](https://tipsonubuntu.com/2018/04/28/change-lid-close-action-ubuntu-18-04-lts/)
+to get more information.
+
+# Monitors
+
+I use to have my laptop monitor disable and the other enable. To do this,
+get the name of your laptop monitor with `xrandr` command. For me it's `eDP-1`.
+So to disable my laptop monitor `eDP-1`, I run the command:
+
+	xrandr --output eDP-1 --off
+
+Note: As I'm running `i3` window management, the previous command is perform
+in the `i3` config file.
+
+To reset these settings, run the command:
+
+	xrandr --auto
 
 # Chromium Browser
 
