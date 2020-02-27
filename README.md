@@ -13,6 +13,26 @@ Meaning of the directories:
 1. Good management of my workspace to work efficiently.
 2. Share my setting system.
 
+# Home directory
+
+You can skip this section that just describe how I structure my home directory.
+It's a reminder for me.
+	
+	~/
+	|__ downloads/
+	|__ life/
+	|__ work/
+	    |__ apps/
+	    |__ learning/
+	    |__ mathstyle/
+	    |__ medias/
+	    |__ miscellaneous/
+	    |__ settings/
+	    |__ tmp/
+	    |__ videos/
+	    |__ extra.org
+	    |__ notes.org
+
 # Setup
 
 To grab all the dependencies, run the command:
@@ -133,7 +153,7 @@ To set `chromium-browser` as the default web browser, run the following commands
 	sudo update-alternatives --config gnone-www-browser
 
 Some applications use `xdg-open`, so you also have to run the following command:
-	
+
 	xdg-settings set default-web-browser chromium-browser.desktop
 
 Get more information at the debian wiki page [Default Web Browser](https://wiki.debian.org/DefaultWebBrowser).
@@ -158,10 +178,10 @@ run the command:
 
 2. Now, we use the command `dd` to create the bootable stick. We still assume the name
 of the usb device is `sdb1` and assume that the iso image `ubuntu-18.04.4-desktop-amd64.iso`
-is in the directory `Downloads` of you user home. To create the bootable stick, run the
+is in the directory `Downloads` of your user home. To create the bootable stick, run the
 command:
 
-		sudo dd bs=4M if=/home/sana/Downloads/ubuntu-18.04.4-desktop-amd64.iso \
+		sudo dd bs=4M if=/home/tony/Downloads/ubuntu-18.04.4-desktop-amd64.iso \
 		of=/dev/sdb1 status=progress oflag=sync
 
 3. After a few minute, your bootable stick is created. You can unplug the usb device.
