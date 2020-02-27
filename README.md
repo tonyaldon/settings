@@ -1,8 +1,7 @@
 # About
 My linux (ubuntu) user configuration.
 
-This configuration works on linux ubuntu 16.04 LTS (maybe later
-release too but not tested).
+This configuration works on linux ubuntu 18.04 LTS.
 
 Meaning of the directories:
 1. `emacs.d` contains my emacs configuration,
@@ -24,7 +23,7 @@ Or to grab all dependencies, set remote url to ssh protocol and get submodules a
 stand alone repositories, run the commands:
 
 	git clone https://github.com/tonyaldon/settings.git
-	cd path/to/settings
+	cd settings
 	make git_repositories
 
 # Links
@@ -44,7 +43,7 @@ If you want to delete previous links made by running `make links`, run the comma
 
 # Keyboard layout
 To install `takbl` keyboard layout, see 
-[keyboard layout](https://github.com/tonyaldon/keyboard-layout/tree/c3b2c099c2f3123e14c8488d0b7c02ebb0f52990) README.
+[keyboard layout](https://github.com/tonyaldon/keyboard-layout) README.
 
 # SSH
 
@@ -61,19 +60,19 @@ commands:
 1. If you get some trouble with the audio (audio cards), you can get informations by
 running the command:
 
-	pulseaudio -vvv
+		pulseaudio -vvv
 
 2. The audio problem I've had was that I did have any sound. Running the command
 `pulseaudio -vvv` gave me:
 
-	E: [pulseaudio] pid.c: Daemon already running.
-	E: [pulseaudio] main.c: pa_pid_file_create() failed.
+		E: [pulseaudio] pid.c: Daemon already running.
+		E: [pulseaudio] main.c: pa_pid_file_create() failed.
 
-I solve the problem by `removing` the `pulse` user config file and `rebooting` the
+3. I solve the problem by `removing` the `pulse` user config file and `rebooting` the
 system. Concretely, I ran the following commands:
 
-	rm -r ~/.config/pulse
-	reboot
+		rm -r ~/.config/pulse
+		reboot
 
 See the [stackexchange discussion](https://askubuntu.com/questions/1056153/pulseaudio-not-working-daemon-already-running-and-no-permission-for-home-folder)
 to get more information.
@@ -134,6 +133,7 @@ To set `chromium-browser` as the default web browser, run the following commands
 	sudo update-alternatives --config gnone-www-browser
 
 Some applications use `xdg-open`, so you also have to run the following command:
+	
 	xdg-settings set default-web-browser chromium-browser.desktop
 
 Get more information at the debian wiki page [Default Web Browser](https://wiki.debian.org/DefaultWebBrowser).
@@ -154,15 +154,15 @@ check if the usb device is mounted. The columns NAME and MOUNTPOINT gives us the
 needed informations. If the name of the usb device is `sdb1`, to umount the usb device,
 run the command:
 
-	sudo umount /dev/sbd1
+		sudo umount /dev/sbd1
 
 2. Now, we use the command `dd` to create the bootable stick. We still assume the name
 of the usb device is `sdb1` and assume that the iso image `ubuntu-18.04.4-desktop-amd64.iso`
 is in the directory `Downloads` of you user home. To create the bootable stick, run the
 command:
 
-	sudo dd bs=4M if=/home/sana/Downloads/ubuntu-18.04.4-desktop-amd64.iso \
-	of=/dev/sdb1 status=progress oflag=sync
+		sudo dd bs=4M if=/home/sana/Downloads/ubuntu-18.04.4-desktop-amd64.iso \
+		of=/dev/sdb1 status=progress oflag=sync
 
 3. After a few minute, your bootable stick is created. You can unplug the usb device.
 
@@ -174,9 +174,9 @@ command:
 plug to the internet network or prepare your wifi login and password.
 
 3. Plug your usb bootable ubuntu stick and reboot from the usb device your computer by pressing
-the key *F12* when the computer restart. If it doesn't boot from the usb, don't worry, restart
-the computer and press the key *F9* to choose the device to boot from. If it doesn't work try
-to figure it out by restarting the computer and pressing the key *ESC* to enter in the system
+the key `F12` when the computer restart. If it doesn't boot from the usb, don't worry, restart
+the computer and press the key `F9` to choose the device to boot from. If it doesn't work try
+to figure it out by restarting the computer and pressing the key `ESC` to enter in the system
 information.
 
 4. When you've entered into the installation assistant, follow the steps, they are pretty
