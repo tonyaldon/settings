@@ -92,3 +92,21 @@ clean_home_directory:
 	    fi; \
 	  fi; \
 	done
+
+deb_packages_minimal:
+	@sudo apt install \
+	  git \
+	  stow \
+	  make \
+	  tree \
+	  feh \
+	  xbindkeys
+
+deb_packages_python:
+	@sudo apt install python3-pip
+
+deb_packages: deb_packages_minimal \
+              deb_packages_python
+
+python_packages:
+	@pip3 install grip
