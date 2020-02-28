@@ -1,6 +1,7 @@
 LOG_GIT_REPOSITORIES = "/tmp/make-git-repositories.log"
 
-.PHONY: all git_repositories links clean_links
+.PHONY: all git_repositories links clean_links default_directories \
+        home_directory clean_default_directories clean_home_directory
 
 all: git_repositories links
 
@@ -47,3 +48,47 @@ clean_links:
 	if [ -f $(BACKUP)/.bashrc ];then mv $(BACKUP)/.bashrc $$HOME/.bashrc;fi; \
 	if [ -f $(BACKUP)/.profile ];then mv $(BACKUP)/.profile $$HOME/.profile;fi; \
 	if [ -d $(BACKUP) ]; then rm -rf $(BACKUP);fi
+
+DEFAULT_DIRECTORIES = Desktop Documents Downloads Music Pictures Public Templates Videos
+HOME_DIRECTORY = \
+    downloads \
+    life \
+    work/apps \
+    work/learning \
+    work/medias \
+    work/miscellaneous \
+    work/settings \
+    work/tmp/ \
+    work/videos
+
+default_directories:
+	@for dir in $(DEFAULT_DIRECTORIES); do \
+	    mkdir -p $$HOME/$$dir; \
+	done
+
+home_directory: clean_default_directories
+	@for dir in $(HOME_DIRECTORY); do \
+	  mkdir -p $$HOME/$$dir; \
+	done
+
+clean_default_directories:
+	@for dir in $(DEFAULT_DIRECTORIES); do \
+	  if [ -d $$HOME/$$dir ]; then \
+	    if [ -z "$$(ls -A $$HOME/$$dir)" ]; then \
+	      rm -rf $$HOME/$$dir; \
+	    else \
+	      echo "$$HOME/$$dir: can't remove: not empty directory"; \
+	    fi; \
+	  fi; \
+	done
+
+clean_home_directory:
+	@for dir in $(HOME_DIRECTORY); do \
+	  if [ -d $$HOME/$$dir ]; then \
+	    if [ -z "$$(ls -A $$HOME/$$dir)" ]; then \
+	      rm -rf $$HOME/$$dir; \
+	    else \
+	      echo "$$HOME/$$dir: can't remove: not empty directory"; \
+	    fi; \
+	  fi; \
+	done

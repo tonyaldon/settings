@@ -33,6 +33,12 @@ It's a reminder for me.
 	    |__ extra.org
 	    |__ notes.org
 
+To get this tree structure, run the commands:
+
+	git clone https://github.com/tonyaldon/settings.git
+	cd settings
+	make home_directory
+
 # Setup
 
 To grab all the dependencies, run the command:
