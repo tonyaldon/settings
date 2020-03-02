@@ -100,13 +100,26 @@ deb_packages_minimal:
 	  make \
 	  tree \
 	  feh \
-	  xbindkeys
+	  xbindkeys \
+	  net-tools \
+	  curl \
+	  chromium-browser
 
 deb_packages_python:
-	@sudo apt install python3-pip
+	@sudo apt install \
+	  python3-pip \
+	  python-minimal
 
 deb_packages: deb_packages_minimal \
               deb_packages_python
 
 python_packages:
 	@pip3 install grip
+
+install: git_repositories links home_directory deb_packages python_packages
+	@cd keyboard-layout && $(MAKE) install
+	@cd emacs.d/.emacs.d && $(MAKE) install
+
+install_sw: git_repositories links deb_packages python_packages
+	@cd keyboard-layout && $(MAKE) install
+	@cd emacs.d/.emacs.d && $(MAKE) install

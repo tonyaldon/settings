@@ -1,23 +1,85 @@
 # About
-My linux (ubuntu) user configuration.
+My linux [ubuntu](https://ubuntu.com/) user configuration.
 
 This configuration works on linux ubuntu 18.04 LTS.
 
 Meaning of the directories:
-1. `emacs.d` contains my emacs configuration,
-2. `i3` contains my i3 configuration,
+1. `emacs.d` contains my [emacs](https://www.gnu.org/software/emacs/) configuration,
+2. `i3` contains my [i3](https://i3wm.org/) configuration,
 3. `keyboard-layout` contains my keyboard layout (takbl),
 4. `uconfig` contains other user configuration files.
 
-# Motivation 
+# Motivation
 1. Good management of my workspace to work efficiently.
 2. Share my setting system.
+
+# Install
+
+My linux configuration includes:
+* some classic dotfiles (.bashrc, .profile, .gitconfig,...),
+* my keyboard-layout `takbl`,
+* a few debian packages (stow, net-tools,...) and python packages (grip,...),
+* the installation of `i3` (last release),
+* and the `i3` config files (.i3status.conf, conf),
+* the installation of `emacs` (last release - snapshot),
+* the command `cask` to manage dependencies of my emacs
+   configuration,
+* my emacs configuration,
+* a specific structure of my home directory.
+
+You can install the whole configuration or only parts of that one. In
+both cases, the `Makefile` files are worth reading.
+
+To install just parts of that one you can browse this `README` and
+the `READMEs` of the submodules.
+
+To install the whole installation, follow the following steps:
+
+1. We first clone this project, make some symlinks in the `$HOME`
+   directory, install some debian packages and python packages. We also
+   install `takbl` keyboard layout and active it, install `emacs`
+   (snapshot), `cask`, all the dependencies of my emacs
+   configuration and `i3` . To do so, run the following commands: 
+
+   a. Standard Way:
+
+		git clone --recurse-submodules https://github.com/tonyaldon/settings.git
+		cd settings
+		make install_sw
+
+   b. (not recommended) Also set git `remote url` to `ssh` protocol and
+   the home directory with a specific structure:
+
+		cd ~/ && mkdir work && cd work
+		git clone https://github.com/tonyaldon/settings.git
+		cd settings
+		make install
+
+2. (optional) Fix errors or warnings (specifically with the audio).
+
+3. (optional) Copy SSH keys into the `~/.ssh` directory.
+
+4. (optional) Configure the laptop lid switch.
+
+5. Install `i3` (last release) and reboot with `i3` as window
+   manager. To do so, run the following commands:
+
+	   cd `~/work/settings/i3`
+	   sudo su
+	   make install
+	   reboot
+
+6. (optional) Set chromium as default browser, configure chromium by
+   adding the chrome extensions and configuring the Saka Key
+   extension.
+
+7. Enjoy programming ;)
 
 # Home directory
 
 You can skip this section that just describe how I structure my home directory.
 It's a reminder for me.
-	
+
 	~/
 	|__ downloads/
 	|__ life/
@@ -65,10 +127,10 @@ Symbolic links are done with [stow](https://www.gnu.org/software/stow/).
 If you want to delete previous links made by running `make links`, run the commands:
 
 	cd path/to/settings
-	make clean_links	
+	make clean_links
 
 # Keyboard layout
-To install `takbl` keyboard layout, see 
+To install `takbl` keyboard layout, see
 [keyboard layout](https://github.com/tonyaldon/keyboard-layout) README.
 
 # SSH
@@ -141,7 +203,7 @@ I'm using [Chromium](https://www.chromium.org/Home) as browser. Run this command
 
 	sudo apt install chromium-browser
 
-## Chromium extensions
+## Chrome extensions
 
 I'm using it with the following extensions:
 
@@ -149,6 +211,9 @@ I'm using it with the following extensions:
 2. [Saka Key](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp): A keyboard interface to Chrome for mouseless browsing.
 3. [Dark Reader](https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh): Dark mode for every website.
 4. [AdBlock](https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom): Block ads and pop-ups on YouTube, Facebook, Twitch, and your favorite websites.
+
+Note: I'm using a specific set of key bindings for the Saka Key
+extension. See the file [takbl-saka-key](./uconfig/.takbl-saka-key).
 
 ## Set default browser
 
