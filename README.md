@@ -22,7 +22,7 @@ My linux configuration includes:
 * the installation of `i3` (last release),
 * and the `i3` config files (.i3status.conf, conf),
 * the installation of `emacs` (last release - snapshot),
-* the command `cask` to manage dependencies of my emacs
+* the installation of `cask` to manage dependencies of my emacs
    configuration,
 * my emacs configuration,
 * a specific structure of my home directory.
@@ -64,10 +64,10 @@ To install the whole installation, follow the following steps:
 5. Install `i3` (last release) and reboot with `i3` as window
    manager. To do so, run the following commands:
 
-	   cd `~/work/settings/i3`
-	   sudo su
-	   make install
-	   reboot
+		cd path/to/settings/i3
+		sudo su
+		make install
+		reboot
 
 6. (optional) Set chromium as default browser, configure chromium by
    adding the chrome extensions and configuring the Saka Key
