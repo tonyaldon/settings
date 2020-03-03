@@ -55,6 +55,7 @@ HOME_DIRECTORY = \
     life \
     work/apps \
     work/learning \
+    work/mathstyle \
     work/medias \
     work/miscellaneous \
     work/settings \
