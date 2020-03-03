@@ -35,45 +35,74 @@ the `READMEs` of the submodules.
 
 To install the whole installation, follow the following steps:
 
-1. We first clone this project, make some symlinks in the `$HOME`
-   directory, install some debian packages and python packages. We also
-   install `takbl` keyboard layout and active it, install `emacs`
-   (snapshot), `cask`, all the dependencies of my emacs
-   configuration and `i3` . To do so, run the following commands: 
+1. Install `git`, `make`, `stow` and clone this repository:
 
-   a. Standard Way:
+	a. Standard Way:
 
+		sudo apt install git make stow
 		git clone --recurse-submodules https://github.com/tonyaldon/settings.git
 		cd settings
-		make install_sw
 
-   b. (not recommended) Also set git `remote url` to `ssh` protocol and
-   the home directory with a specific structure:
+	b. (for me) Also set git `remote url` to `ssh` protocol:
 
+		sudo apt install git make stow
 		cd ~/ && mkdir work && cd work
 		git clone https://github.com/tonyaldon/settings.git
 		cd settings
+		make git_repositories
+
+2. Install some debian pakages and python packages:
+
+		make deb_packages
+		make python_packages
+
+3. Set the links in the `$HOME` directory:
+
+		make links
+
+4. (optional) Structure the `$HOME` directory:
+
+		make home_directory
+
+5. Install `takbl` keyboard layout and active it:
+
+		cd path/to/settings/keyboard-layout
+		sudo make install
+
+6. Install `emacs` (snapshot), `cask` and all the dependencies of my
+   emacs configuration:
+   
+		cd path/to/settings/emacs.d/.emacs.d
 		make install
 
-2. (optional) Fix errors or warnings (specifically with the audio).
+7. Copy SSH keys into the `~/.ssh` directory.
 
-3. (optional) Copy SSH keys into the `~/.ssh` directory.
+8. Configure the laptop lid switch.
 
-4. (optional) Configure the laptop lid switch.
-
-5. Install `i3` (last release) and reboot with `i3` as window
-   manager. To do so, run the following commands:
+9. Install `i3` (last release) and reboot with `i3` as window manager:
 
 		cd path/to/settings/i3
 		sudo su
 		make install
 		reboot
 
-6. (optional) Set chromium as default browser, configure chromium by
-   adding the chrome extensions and configuring the Saka Key
-   extension.
+10. Set chromium as default browser: 
 
-7. Enjoy programming ;)
+	a. To set `chromium-browser` as the default web browser, run the
+    following commands and choose `chromium-browser` as alternative:
+
+		sudo update-alternatives --config x-www-browser
+		sudo update-alternatives --config gnone-www-browser
+
+	b. Some applications use `xdg-open`, so you also have to run the
+    following command:
+
+		xdg-settings set default-web-browser chromium-browser.desktop
+
+11. Configure chromium by adding the chrome extensions and configuring
+    the Saka Key extension.
+
+12. Enjoy programming ;)
 
 # Home directory
 
@@ -240,22 +269,20 @@ All my settings have been tested with ubuntu LTS 18.04.4 desktop amd64.
 
 In the section, I assume you are using ubuntu release >= 16.04.
 
-1. Plug a usb device and ensure it is umounted. With the command `lsblk` you can
-check if the usb device is mounted. The columns NAME and MOUNTPOINT gives us the
-needed informations. If the name of the usb device is `sdb1`, to umount the usb device,
-run the command:
+1. Have a look on the official tutorial: [Create a bootable USB stick on ubuntu](https://ubuntu.com/tutorials/tutorial-create-a-usb-stick-on-ubuntu#1-overview).
 
-		sudo umount /dev/sbd1
+2. Download ubuntu. It should be on the `~/Downloads` directory.
 
-2. Now, we use the command `dd` to create the bootable stick. We still assume the name
-of the usb device is `sdb1` and assume that the iso image `ubuntu-18.04.4-desktop-amd64.iso`
-is in the directory `Downloads` of your user home. To create the bootable stick, run the
-command:
+3. Plug your USB storage.
 
-		sudo dd bs=4M if=/home/tony/Downloads/ubuntu-18.04.4-desktop-amd64.iso \
-		of=/dev/sdb1 status=progress oflag=sync
+4. Launch Startup Disk Creator
 
-3. After a few minute, your bootable stick is created. You can unplug the usb device.
+5. When launched, Startup Disk Creator will look for the ISO files in
+   your Downloads folder, as well as any attached USB storage it can
+   write to. If the ISO file and the USB storage selected are the good
+   ones, Click on `Make Startup Disk` to start the process.
+
+6. You can know use the bootable USB stick to install ubuntu.
 
 ## Install ubuntu
 
