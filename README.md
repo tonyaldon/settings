@@ -51,23 +51,24 @@ To install the whole installation, follow the following steps:
 		cd settings
 		make git_repositories
 
-2. Install some debian pakages and python packages:
+2. Install `takbl` keyboard layout and active it:
+
+		cd path/to/settings/keyboard-layout
+		sudo make install
+
+3. Install some debian pakages and python packages:
 
 		make deb_packages
 		make python_packages
 
-3. Set the links in the `$HOME` directory:
+4. Set the links in the `$HOME` directory:
 
 		make links
+		source .bashrc
 
-4. (optional) Structure the `$HOME` directory:
+5. (optional) Structure the `$HOME` directory:
 
 		make home_directory
-
-5. Install `takbl` keyboard layout and active it:
-
-		cd path/to/settings/keyboard-layout
-		sudo make install
 
 6. Install `emacs` (snapshot), `cask` and all the dependencies of my
    emacs configuration:
