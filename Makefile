@@ -115,11 +115,3 @@ deb_packages: deb_packages_minimal \
 
 python_packages:
 	@pip3 install grip
-
-install: git_repositories links home_directory deb_packages python_packages
-	@cd keyboard-layout && $(MAKE) install
-	@cd emacs.d/.emacs.d && $(MAKE) install
-
-install_sw: git_repositories links deb_packages python_packages
-	@cd keyboard-layout && $(MAKE) install
-	@cd emacs.d/.emacs.d && $(MAKE) install
