@@ -195,6 +195,15 @@ system. Concretely, I ran the following commands:
 See the [stackexchange discussion](https://askubuntu.com/questions/1056153/pulseaudio-not-working-daemon-already-running-and-no-permission-for-home-folder)
 to get more information.
 
+# Video
+
+I've had some trouble with the sound card drivers. To get more
+information I've install the packages `vainfo` and `vdpauin`. I solve
+the problem by installing the packages `mesa-vdpau-drivers`,
+`libvdpau-dev`, `libvdpau-va-gl1`.
+
+	sudo apt install mesa-vdpau-drivers libvdpau-dev libvdpau-va-gl1
+
 # Laptop lid switch
 
 To handle how the system deal with the laptop lid, tweak the file
@@ -258,6 +267,22 @@ Some applications use `xdg-open`, so you also have to run the following command:
 	xdg-settings set default-web-browser chromium-browser.desktop
 
 Get more information at the debian wiki page [Default Web Browser](https://wiki.debian.org/DefaultWebBrowser).
+
+## Chromium settings
+
+1. Set download directory path (Advanced setting).
+2. Set order language base on my preference (Advanced setting).
+
+# /etc directory
+
+The `/etc` directory is really important when it comes to the
+configuration of your whole linux system, that inpact all the users on
+your machine or on your server.
+
+To get the most of the changes made on the system and to be able to go
+back in time to a previous configuration, I use
+[etckeeper](https://etckeeper.branchable.com/) to store the `/etc`
+directory in a git repository.
 
 # Install ubuntu desktop
 
