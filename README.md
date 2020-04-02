@@ -4,10 +4,14 @@ My linux [ubuntu](https://ubuntu.com/) user configuration.
 This configuration works on linux ubuntu 18.04 LTS.
 
 Meaning of the directories:
-1. `emacs.d` contains my [emacs](https://www.gnu.org/software/emacs/) configuration,
-2. `i3` contains my [i3](https://i3wm.org/) configuration,
-3. `keyboard-layout` contains my keyboard layout (takbl),
-4. `uconfig` contains other user configuration files.
+1. [emacs.d](https://github.com/emacs.d) contains my
+   [emacs](https://www.gnu.org/software/emacs/) configuration,
+2. [i3](https://github.com/i3) contains my [i3](https://i3wm.org/)
+   configuration,
+3. [keyboard-layout](https://github.com/keyboard-layout) contains my
+   keyboard layout (takbl),
+4. [uconfig](https://github.com/uconfig) contains other user
+   configuration files.
 
 # Motivation
 1. Good management of my workspace to work efficiently.
@@ -51,10 +55,12 @@ To install the whole installation, follow the following steps:
 		cd settings
 		make git_repositories
 
-2. Install `takbl` keyboard layout and active it:
+2. Install `takbl` keyboard layout and active it.  To get more
+   details, see
+   [keyboard-layout](https://github.com/keyboard-layout).
 
 		cd path/to/settings/keyboard-layout
-		sudo make install
+		make install
 
 3. Install some debian pakages and python packages:
 
@@ -71,7 +77,8 @@ To install the whole installation, follow the following steps:
 		make home_directory
 
 6. Install `emacs` (snapshot), `cask` and all the dependencies of my
-   emacs configuration:
+   emacs configuration.  To get more details, see
+   [emacs.d](https://github.com/emacs.d).
    
 		cd path/to/settings/emacs.d/.emacs.d
 		make install
@@ -80,11 +87,10 @@ To install the whole installation, follow the following steps:
 
 8. Configure the laptop lid switch.
 
-9. Install `i3` (last release) and reboot with `i3` as window manager:
+9. Install `i3` (last release) and reboot with `i3` as window
+   manager. To get more details, see [i3](https://github.com/i3).
 
-		cd path/to/settings/i3
-		sudo su
-		make install
+		sudo apt install i3
 		reboot
 
 10. Set chromium as default browser: 
