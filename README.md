@@ -4,13 +4,13 @@ My linux [ubuntu](https://ubuntu.com/) user configuration.
 This configuration works on linux ubuntu 18.04 LTS.
 
 Meaning of the directories:
-1. [emacs.d](https://github.com/emacs.d) contains my
+1. [emacs.d](https://github.com/tonyaldon/emacs.d) contains my
    [emacs](https://www.gnu.org/software/emacs/) configuration,
-2. [i3](https://github.com/i3) contains my [i3](https://i3wm.org/)
+2. [i3](https://github.com/tonyaldon/i3) contains my [i3](https://i3wm.org/)
    configuration,
-3. [keyboard-layout](https://github.com/keyboard-layout) contains my
+3. [keyboard-layout](https://github.com/tonyaldon/keyboard-layout) contains my
    keyboard layout (takbl),
-4. [uconfig](https://github.com/uconfig) contains other user
+4. [uconfig](https://github.com/tonyaldon/uconfig) contains other user
    configuration files.
 
 # Motivation
