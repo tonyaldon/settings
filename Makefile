@@ -104,15 +104,40 @@ deb_packages_minimal:
 	  xbindkeys \
 	  net-tools \
 	  curl \
-	  chromium-browser
+	  chromium-browser \
+	  openssh-server \
+	  sshfs \
+	  xvkbd \
+	  whois \
+	  etckeeper \
+	  gawk \
+	  pmount \
+	  libimobiledevice6 \
+	  libimobiledevice-utils \
+	  ifuse
 
 deb_packages_python:
 	@sudo apt install \
+	  python-minimal \
 	  python3-pip \
-	  python-minimal
+	  python3-venv
+
+deb_packages_medias:
+	@sudo apt install \
+	  vlc \
+	  mediainfo \
+	  ffmpeg \
+	  imagemagick \
+	  kdenlive \
+	  kde-runtime \
+	  blender \
+	  inkscape \
+	  gimp \
+	  audacity
 
 deb_packages: deb_packages_minimal \
-              deb_packages_python
+              deb_packages_python \
+	      deb_packages_medias
 
 python_packages:
 	@pip3 install grip
