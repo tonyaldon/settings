@@ -197,6 +197,16 @@ to get more information.
 
 # Video
 
+## Kdenlive
+
+If you want to use `Breeze Dark` theme into `kdenlive`, `kdenlive`
+should be installed and you have to install `kde-runtime` package and
+enable it in section `Settings > Theme` of `kdenlive`. To do so, run
+the command:
+
+	sudo apt install kde-runtime
+
+## Sound card drivers
 I've had some trouble with the sound card drivers. To get more
 information I've install the packages `vainfo` and `vdpauin`. I solve
 the problem by installing the packages `mesa-vdpau-drivers`,
