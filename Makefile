@@ -114,13 +114,23 @@ deb_packages_minimal:
 	  pmount \
 	  libimobiledevice6 \
 	  libimobiledevice-utils \
-	  ifuse
+	  ifuse \
+	  gcc \
+	  g++ \
+	  php \
+	  ncftp \
+	  nginx \
+	  certbot
 
 deb_packages_python:
 	@sudo apt install \
 	  python-minimal \
 	  python3-pip \
 	  python3-venv
+
+deb_packages_node:
+	@curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - ; \
+	sudo apt install nodejs
 
 deb_packages_medias:
 	@sudo apt install \
@@ -137,7 +147,16 @@ deb_packages_medias:
 
 deb_packages: deb_packages_minimal \
               deb_packages_python \
+	      deb_packages_node \
 	      deb_packages_medias
 
 python_packages:
 	@pip3 install grip
+
+node_packages:
+	@sudo npm i pm2 -g
+
+media_packages:
+	@sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl \
+	  -o /usr/local/bin/youtube-dl ; \
+	sudo chmod a+rx /usr/local/bin/youtube-dl
