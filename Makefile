@@ -145,10 +145,16 @@ deb_packages_medias:
 	  gimp \
 	  audacity
 
+deb_packages_learning:
+	@sudo apt install \
+	  klavaro \
+	  anki
+
 deb_packages: deb_packages_minimal \
               deb_packages_python \
 	      deb_packages_node \
-	      deb_packages_medias
+	      deb_packages_medias \
+	      deb_packages_learning
 
 python_packages:
 	@pip3 install grip
