@@ -300,6 +300,18 @@ back in time to a previous configuration, I use
 [etckeeper](https://etckeeper.branchable.com/) to store the `/etc`
 directory in a git repository.
 
+# Learning
+
+I use [anki](https://apps.ankiweb.net/) to work my memory on subject I
+care about. To install it you juste have to run the following command:
+
+	sudo apt install anki
+
+After install it, I add it these following two addons:
+
+1. [https://ankiweb.net/shared/info/1846592880]((anki addon) Zoom 2.1),
+2. [https://ankiweb.net/shared/info/1496166067]((anki addon) Night Mode).
+
 # Install ubuntu desktop
 
 ## Download
