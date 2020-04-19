@@ -151,7 +151,7 @@ deb_packages_learning:
 	  anki
 
 deb_packages: deb_packages_minimal \
-              deb_packages_python \
+	      deb_packages_python \
 	      deb_packages_node \
 	      deb_packages_medias \
 	      deb_packages_learning
@@ -160,7 +160,8 @@ python_packages:
 	@pip3 install grip
 
 node_packages:
-	@sudo npm i pm2 -g
+	@sudo npm i -g pm2 ; \
+	sudo npm i -g tern
 
 media_packages:
 	@sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl \
