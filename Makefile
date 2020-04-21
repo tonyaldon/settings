@@ -1,7 +1,8 @@
 LOG_GIT_REPOSITORIES = "/tmp/make-git-repositories.log"
 
 .PHONY: all git_repositories links clean_links default_directories \
-        home_directory clean_default_directories clean_home_directory
+        home_directory clean_default_directories clean_home_directory \
+	sync_usb_get_work sync_usb_put_work sync_usb_work
 
 all: git_repositories links
 
@@ -195,4 +196,26 @@ backup_put_usb:
 	$(call rsync_avz_delete,/etc/,etc-tony,sudo) ; \
 	$(call rsync_avz_exclude,/var/www,var-tony)
 
+SYNC = sync
+SYNC_WORK_LOG = $(USB)/sync.log
+
+define rsync_auvzb_exclude
+	printf "\n\n[%s --> %s]\n" "$(1)" "$(2)" \
+	  | tee -a $(SYNC_WORK_LOG) ; \
+	rsync -auvzb --backup-dir="$(SYNC)" --exclude="*node_modules*" \
+	  $(1) $(2) | tee -a $(SYNC_WORK_LOG)
+endef
+
+sync_usb_work:
+	@printf "%s\n" "[sync work directory date] `date +'%F %T %Z'`" \
+	  >> $(SYNC_WORK_LOG) ; \
+	$(call rsync_auvzb_exclude,$(USB)/work/,$$HOME/work/) ; \
+	$(call rsync_auvzb_exclude,$$HOME/work/,$(USB)/work/) ; \
+	$(call rsync_auvzb_exclude,$(USB)/work/,$$HOME/work/) ; \
+	cp $(SYNC_WORK_LOG) $(USB)/work/ ; \
+	mv $(SYNC_WORK_LOG) $$HOME/work/
+
+clean_sync_usb_work:
+	@rm -r $$HOME/work/$(SYNC) $$HOME/work/sync.log ; \
+	rm -r $(USB)/work/$(SYNC) $(USB)/work/sync.log
 
