@@ -31,12 +31,12 @@ git_repositories:
 	@git submodule init
 	@echo "Clone submodules and set-url origin to ssh form...done"
 
-BACKUP = .backup
+BACKUP_DOT_FILES = .backup
 
 links:
-	@if [ ! -d $(BACKUP) ];then mkdir $(BACKUP);fi; \
-	if [ -f $$HOME/.bashrc ];then mv $$HOME/.bashrc $(BACKUP)/.bashrc;fi; \
-	if [ -f $$HOME/.profile ];then mv $$HOME/.profile $(BACKUP)/.profile;fi; \
+	@if [ ! -d $(BACKUP_DOT_FILES) ];then mkdir $(BACKUP_DOT_FILES);fi; \
+	if [ -f $$HOME/.bashrc ];then mv $$HOME/.bashrc $(BACKUP_DOT_FILES)/.bashrc;fi; \
+	if [ -f $$HOME/.profile ];then mv $$HOME/.profile $(BACKUP_DOT_FILES)/.profile;fi; \
 	stow -t $$HOME emacs.d; \
 	stow -t $$HOME uconfig; \
 	stow -t $$HOME i3
@@ -45,9 +45,9 @@ clean_links:
 	@stow -D -t $$HOME emacs.d; \
 	stow -D -t $$HOME uconfig; \
 	stow -D -t $$HOME i3; \
-	if [ -f $(BACKUP)/.bashrc ];then mv $(BACKUP)/.bashrc $$HOME/.bashrc;fi; \
-	if [ -f $(BACKUP)/.profile ];then mv $(BACKUP)/.profile $$HOME/.profile;fi; \
-	if [ -d $(BACKUP) ]; then rm -rf $(BACKUP);fi
+	if [ -f $(BACKUP_DOT_FILES)/.bashrc ];then mv $(BACKUP_DOT_FILES)/.bashrc $$HOME/.bashrc;fi; \
+	if [ -f $(BACKUP_DOT_FILES)/.profile ];then mv $(BACKUP_DOT_FILES)/.profile $$HOME/.profile;fi; \
+	if [ -d $(BACKUP_DOT_FILES) ]; then rm -rf $(BACKUP_DOT_FILES);fi
 
 DEFAULT_DIRECTORIES = Desktop Documents Downloads Music Pictures Public Templates Videos
 HOME_DIRECTORY = \
