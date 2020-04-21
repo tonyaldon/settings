@@ -172,38 +172,27 @@ USB = /media/usb
 BACKUP_USB_LOG = $(USB)/backup.log
 
 define rsync_avz_exclude
-	printf "[%s --> %s]\n" "$$HOME/life/" "$(USB)/life/" \
+	printf "\n\n[%s --> %s]\n" "$(1)" "$(USB)/$(2)/" \
 	  | tee -a $(BACKUP_USB_LOG) ; \
 	rsync -avz --exclude="*node_modules*" --delete-excluded \
-	  $$HOME/life/ $(USB)/life/ | tee -a $(BACKUP_USB_LOG) ;
+	  $(1) $(USB)/$(2)/ | tee -a $(BACKUP_USB_LOG)
+endef
+
+define rsync_avz_delete
+	printf "\n\n[%s --> %s]\n" "$(1)" "$(USB)/$(2)/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	$(3) rsync -avz --delete \
+	  $(1) $(USB)/$(2)/ | tee -a $(BACKUP_USB_LOG)
 endef
 
 backup_put_usb:
-	@printf "\n\n\n%s\n" "[backup date] `date +'%F %T %Z'`" >> $(BACKUP_USB_LOG) ; \
-	printf "[%s --> %s]\n" "$$HOME/life/" "$(USB)/life/" \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	rsync -avz --exclude="*node_modules*" --delete-excluded \
-	  $$HOME/life/ $(USB)/life/ | tee -a $(BACKUP_USB_LOG) ; \
-	printf "\n\n[%s --> %s]\n" "$$HOME/work/" "$(USB)/work/" \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	rsync -avz --exclude="*node_modules*" --delete-excluded \
-	  $$HOME/work/ $(USB)/work/ | tee -a $(BACKUP_USB_LOG) ; \
-	printf "\n\n[%s --> %s]\n" "$$HOME/.ssh/" "$(USB)/ssh/" \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	rsync -avz $$HOME/.ssh/ $(USB)/ssh/ --delete \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	printf "\n\n[%s --> %s]\n" "$$HOME/.tony/" "$(USB)/tony/" \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	rsync -avz $$HOME/.tony/ $(USB)/tony/ --delete \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	printf "\n\n[%s --> %s]\n" "/etc/" "$(USB)/etc-tony/" \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	sudo rsync -avz /etc/ $(USB)/etc-tony/ --delete \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	printf "\n\n[%s --> %s]\n" "/var/www" "$(USB)/var-tony/" \
-	  | tee -a $(BACKUP_USB_LOG) ; \
-	rsync -avz --exclude="*node_modules*" --delete-excluded \
-	  /var/www $(USB)/var-tony/ | tee -a $(BACKUP_USB_LOG)
-
+	@printf "\n\n\n%s\n" "[backup date] `date +'%F %T %Z'`" \
+	  >> $(BACKUP_USB_LOG) ; \
+	$(call rsync_avz_exclude,$$HOME/life/,life) ; \
+	$(call rsync_avz_exclude,$$HOME/work/,work) ; \
+	$(call rsync_avz_delete,$$HOME/.ssh/,ssh,) ; \
+	$(call rsync_avz_delete,$$HOME/.tony/,tony,) ; \
+	$(call rsync_avz_delete,/etc/,etc-tony,sudo) ; \
+	$(call rsync_avz_exclude,/var/www,var-tony)
 
 
