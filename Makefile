@@ -167,3 +167,43 @@ media_packages:
 	@sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl \
 	  -o /usr/local/bin/youtube-dl ; \
 	sudo chmod a+rx /usr/local/bin/youtube-dl
+
+USB = /media/usb
+BACKUP_USB_LOG = $(USB)/backup.log
+
+define rsync_avz_exclude
+	printf "[%s --> %s]\n" "$$HOME/life/" "$(USB)/life/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	rsync -avz --exclude="*node_modules*" --delete-excluded \
+	  $$HOME/life/ $(USB)/life/ | tee -a $(BACKUP_USB_LOG) ;
+endef
+
+backup_put_usb:
+	@printf "\n\n\n%s\n" "[backup date] `date +'%F %T %Z'`" >> $(BACKUP_USB_LOG) ; \
+	printf "[%s --> %s]\n" "$$HOME/life/" "$(USB)/life/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	rsync -avz --exclude="*node_modules*" --delete-excluded \
+	  $$HOME/life/ $(USB)/life/ | tee -a $(BACKUP_USB_LOG) ; \
+	printf "\n\n[%s --> %s]\n" "$$HOME/work/" "$(USB)/work/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	rsync -avz --exclude="*node_modules*" --delete-excluded \
+	  $$HOME/work/ $(USB)/work/ | tee -a $(BACKUP_USB_LOG) ; \
+	printf "\n\n[%s --> %s]\n" "$$HOME/.ssh/" "$(USB)/ssh/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	rsync -avz $$HOME/.ssh/ $(USB)/ssh/ --delete \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	printf "\n\n[%s --> %s]\n" "$$HOME/.tony/" "$(USB)/tony/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	rsync -avz $$HOME/.tony/ $(USB)/tony/ --delete \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	printf "\n\n[%s --> %s]\n" "/etc/" "$(USB)/etc-tony/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	sudo rsync -avz /etc/ $(USB)/etc-tony/ --delete \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	printf "\n\n[%s --> %s]\n" "/var/www" "$(USB)/var-tony/" \
+	  | tee -a $(BACKUP_USB_LOG) ; \
+	rsync -avz --exclude="*node_modules*" --delete-excluded \
+	  /var/www $(USB)/var-tony/ | tee -a $(BACKUP_USB_LOG)
+
+
+
