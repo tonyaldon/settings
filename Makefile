@@ -40,7 +40,7 @@ links:
 	if [ -f $$HOME/.profile ];then mv $$HOME/.profile $(BACKUP_DOT_FILES)/.profile;fi; \
 	stow -t $$HOME emacs.d; \
 	stow -t $$HOME uconfig; \
-	stow -t $$HOME i3
+	stow --ignore=Makefile -t $$HOME i3; \
 
 clean_links:
 	@stow -D -t $$HOME emacs.d; \
