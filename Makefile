@@ -41,13 +41,19 @@ links:
 	stow -t $$HOME emacs.d; \
 	stow -t $$HOME uconfig; \
 	stow --ignore=Makefile -t $$HOME i3; \
+	if [ -d /usr/share/themes/Emacs ];then mv /usr/share/themes/Emacs \
+	  $(BACKUP_DOT_FILES);fi; \
+	sudo stow -t / root/
 
 clean_links:
 	@stow -D -t $$HOME emacs.d; \
 	stow -D -t $$HOME uconfig; \
 	stow -D -t $$HOME i3; \
+	sudo stow -D -t / root/; \
 	if [ -f $(BACKUP_DOT_FILES)/.bashrc ];then mv $(BACKUP_DOT_FILES)/.bashrc $$HOME/.bashrc;fi; \
 	if [ -f $(BACKUP_DOT_FILES)/.profile ];then mv $(BACKUP_DOT_FILES)/.profile $$HOME/.profile;fi; \
+	if [ -d $(BACKUP_DOT_FILES)/Emacs ];then \
+	  sudo mv $(BACKUP_DOT_FILES)/Emacs /usr/share/themes/ ;fi; \
 	if [ -d $(BACKUP_DOT_FILES) ]; then rm -rf $(BACKUP_DOT_FILES);fi
 
 DEFAULT_DIRECTORIES = Desktop Documents Downloads Music Pictures Public Templates Videos
