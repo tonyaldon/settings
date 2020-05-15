@@ -286,8 +286,12 @@ Get more information at the debian wiki page [Default Web Browser](https://wiki.
 
 ## Chromium settings
 
-1. Set download directory path (Advanced setting).
-2. Set order language base on my preference (Advanced setting).
+1. Set download directory path (Advanced setting),
+2. Set order language base on my preference (Advanced setting),
+3. Turn off ask for notification: `Settings > Privacy and Security > Site settings > Notifications`,
+4. Hide chrome extension: Click right on the extension, then choose `hide in chromium menu`,
+5. Create custom Shortcuts for commands related to extensions: visit `chrome://extensions/shortcuts`,
+6. Use `GTK+` theme: `Settings > Appearence > themes > GTK+`.
 
 # Backup
 ## Backup

@@ -127,7 +127,10 @@ deb_packages_minimal:
 	  php \
 	  ncftp \
 	  nginx \
-	  certbot
+	  certbot \
+	  libgtk-3-dev \
+	  gtk-theme-switch \
+	  htop
 
 deb_packages_python:
 	@sudo apt install \
