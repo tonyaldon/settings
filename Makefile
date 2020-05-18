@@ -182,6 +182,9 @@ brew_install:
 	@/bin/bash -c "$$(curl -fsSL \
 	  https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+brew_packages:
+	@brew install watchman
+
 USB = /media/usb
 BACKUP_USB_LOG = $(USB)/backup.log
 
