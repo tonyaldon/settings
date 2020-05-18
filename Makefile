@@ -178,6 +178,10 @@ media_packages:
 	  -o /usr/local/bin/youtube-dl ; \
 	sudo chmod a+rx /usr/local/bin/youtube-dl
 
+brew_install:
+	@/bin/bash -c "$$(curl -fsSL \
+	  https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
 USB = /media/usb
 BACKUP_USB_LOG = $(USB)/backup.log
 
