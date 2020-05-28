@@ -130,7 +130,10 @@ deb_packages_minimal:
 	  certbot \
 	  libgtk-3-dev \
 	  gtk-theme-switch \
-	  htop
+	  htop \
+	  inotify-tools \
+	  wmctrl \
+	  xdotool
 
 deb_packages_python:
 	@sudo apt install \
