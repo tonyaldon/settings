@@ -79,7 +79,7 @@ To install the whole installation, follow the following steps:
 6. Install `emacs` (snapshot), `cask` and all the dependencies of my
    emacs configuration.  To get more details, see
    [emacs.d](https://github.com/emacs.d).
-   
+
 		cd path/to/settings/emacs.d/.emacs.d
 		make install
 
@@ -93,7 +93,7 @@ To install the whole installation, follow the following steps:
 		sudo apt install i3
 		reboot
 
-10. Set chromium as default browser: 
+10. Set chromium as default browser:
 
 	a. To set `chromium-browser` as the default web browser, run the
     following commands and choose `chromium-browser` as alternative:
@@ -143,7 +143,7 @@ To grab all the dependencies, run the command:
 
 	git clone --recurse-submodules https://github.com/tonyaldon/settings.git
 
-Or to grab all dependencies, set remote url to ssh protocol and get submodules as 
+Or to grab all dependencies, set remote url to ssh protocol and get submodules as
 stand alone repositories, run the commands:
 
 	git clone https://github.com/tonyaldon/settings.git
@@ -354,7 +354,9 @@ back in time to a previous configuration, I use
 [etckeeper](https://etckeeper.branchable.com/) to store the `/etc`
 directory in a git repository.
 
-# Learning
+# Miscellaneous
+
+## Anki
 
 I use [anki](https://apps.ankiweb.net/) to work my memory on subject I
 care about. To install it you juste have to run the following command:
@@ -363,8 +365,19 @@ care about. To install it you juste have to run the following command:
 
 After install it, I add it these following two addons:
 
-1. [https://ankiweb.net/shared/info/1846592880]((anki addon) Zoom 2.1),
-2. [https://ankiweb.net/shared/info/1496166067]((anki addon) Night Mode).
+1. [Zoom 2.1](https://ankiweb.net/shared/info/1846592880),
+2. [Night Mode](https://ankiweb.net/shared/info/1496166067).
+
+## fzf
+
+[fzf](https://github.com/junegunn/fzf) is installed with `brew`, see
+the [Makefile](Makefile).
+
+`fzf` comes with a standard setup that offers useful key bindings and
+fuzzy completion. To add the standard setup, run the command:
+
+	$(brew --prefix)/opt/fzf/install
+
 
 # Install ubuntu desktop
 
