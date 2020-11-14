@@ -133,7 +133,8 @@ deb_packages_minimal:
 	  htop \
 	  inotify-tools \
 	  wmctrl \
-	  xdotool
+	  xdotool \
+	  libreoffice
 
 deb_packages_python:
 	@sudo apt install \
@@ -186,7 +187,9 @@ brew_install:
 	  https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 brew_packages:
-	@brew install watchman
+	@brew install watchman ; \
+	brew install cloc ; \
+	brew install fzf
 
 USB = /media/usb
 BACKUP_USB_LOG = $(USB)/backup.log
@@ -237,4 +240,3 @@ sync_usb_work:
 clean_sync_usb_work:
 	@rm -r $$HOME/work/$(SYNC) $$HOME/work/sync.log ; \
 	rm -r $(USB)/work/$(SYNC) $(USB)/work/sync.log
-
