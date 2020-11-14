@@ -378,6 +378,36 @@ fuzzy completion. To add the standard setup, run the command:
 
 	$(brew --prefix)/opt/fzf/install
 
+# Install with dpkg
+
+As I'm using ubuntu 18.04 and some programs are officially maintained
+for higher ubuntu version, I can't install it with `apt install` and
+have to install with `dpkg`. I prefer not to put the installation in
+the [Makefile](Makefile) but here.
+
+## fd
+
+To install [fd](https://github.com/sharkdp/fd), download the release
+[fd/releases](https://github.com/sharkdp/fd/releases), and run the
+command:
+
+	sudo dpkg -i fd_8.1.0_amd64.deb
+
+## ripgrep
+
+To install [ripgrep](https://github.com/BurntSushi/ripgrep), run the
+following commands:
+
+	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+	sudo dpkg -i ripgrep_11.0.2_amd64.deb
+
+## bat
+
+To install [bat](https://github.com/sharkdp/bat), download the release
+[bat/release](https://github.com/sharkdp/bat/releases), and run the
+command:
+
+	sudo dpkg -i bat_0.16.0_amd64.deb
 
 # Install ubuntu desktop
 
