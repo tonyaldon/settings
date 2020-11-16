@@ -134,7 +134,9 @@ deb_packages_minimal:
 	  inotify-tools \
 	  wmctrl \
 	  xdotool \
-	  libreoffice
+	  libreoffice \
+	  graphviz \
+	  graphviz-doc
 
 deb_packages_python:
 	@sudo apt install \
